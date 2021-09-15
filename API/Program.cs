@@ -24,5 +24,3 @@ namespace API
                 });
     }
 }
-
-//não precisa mexer nesse cara, ele está pronto
