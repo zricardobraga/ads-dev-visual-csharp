@@ -9,3 +9,22 @@ Content-Type: application/json
 
 ###
 GET https://localhost:5001/api/produto/list
+
+###
+GET https://localhost:5001/api/produto/getbyid/1
+
+###
+DELETE https://localhost:5001/api/produto/delete/Bolacha
+
+###
+DELETE https://localhost:5001/api/produto/delete/1
+
+###
+PUT https://localhost:5001/api/produto/update
+Content-Type: application/json
+
+{   
+    "Id": 1,
+    "Nome" : "Bolacha alterada",
+    "Preco": 3.60
+}
