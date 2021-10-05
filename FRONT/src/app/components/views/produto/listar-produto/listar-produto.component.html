@@ -2,7 +2,9 @@
 
 <ol>
     <li *ngFor="let produto of produtos">
-        {{ produto.nome }}
+        Nome: {{ produto.nome }}
+        Quantidade: {{produto.quantidade}}
+        Preco: {{produto.preco}}
         <!-- <a routerLink="/produto/cadastrar/{{ produto.id }}">Novo Produto</a> -->
     </li>
 </ol>

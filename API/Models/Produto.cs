@@ -10,6 +10,7 @@ namespace API.Models
         public string Descricao { get; set; }
         public int Quantidade { get; set; }
         public DateTime CriadoEm { get; set; }
+        public Categoria IdCategoria { get; set; }
 
         //constructor do jeito normal
         // public Produto() { CriadoEm = DateTime.Now; }
