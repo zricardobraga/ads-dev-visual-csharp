@@ -11,13 +11,13 @@ import { ProdutoService } from "src/app/services/produto.service";
 export class ListarProdutoComponent implements OnInit {
     //passa a informação do componente para o html
     produtos: Produto[] = [];
+    colunasExibidas: string[] = ["id", "nome", "preco", "quantidade", "categoria"];
 
     constructor(private service: ProdutoService) {}
 
     ngOnInit(): void {
         this.service.list().subscribe((produtos) => {
             this.produtos = produtos;
-            console.log(produtos);
         });
     }
 }

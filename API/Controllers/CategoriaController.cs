@@ -7,10 +7,10 @@ namespace API.Controllers
 {
     [ApiController] //anotação
 	[Route("api/categoria")] //rota de api
-    public class CategoriaControeller : ControllerBase
+    public class CategoriaController : ControllerBase
     {
         private readonly DataContext _context;
-        public CategoriaControeller(DataContext context)
+        public CategoriaController(DataContext context)
         {
             _context = context;
         }
@@ -18,7 +18,7 @@ namespace API.Controllers
         //POST: api/categoria/create
 		[HttpPost]
 		[Route("create")]
-		public IActionResult Create([FromBody]Categoria categoria) 
+		public IActionResult Create([FromBody]Categoria categoria)
 		{
             _context.Categorias.Add(categoria);
             //confirma o objeto salvo no banco de dados

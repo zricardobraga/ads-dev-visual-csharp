@@ -3,28 +3,33 @@ POST https://localhost:5001/api/produto/create
 Content-Type: application/json
 
 {
-    "Nome" : "Arroz",
-    "Preco": 20.5
+    "Nome" : "Camisa",
+    "Preco": 150.5,
+    "Descricao": "teste",
+    "Quantidade": 10,
+    "CategoriaId": 3
+    
 }
 
 ###
 GET https://localhost:5001/api/produto/list
 
 ###
-GET https://localhost:5001/api/produto/getbyid/1
+GET https://localhost:5001/api/produto/getbyid/7
 
 ###
 DELETE https://localhost:5001/api/produto/delete/Bolacha
 
 ###
-DELETE https://localhost:5001/api/produto/delete/1
+DELETE https://localhost:5001/api/produto/delete/8
 
 ###
 PUT https://localhost:5001/api/produto/update
 Content-Type: application/json
 
 {   
-    "Id": 1,
-    "Nome" : "Bolacha alterada",
-    "Preco": 3.60
+    "Id": 7,
+    "Nome" : "Camisa",
+    "Preco": 150.60,
+    "CategoriaId": 1
 }

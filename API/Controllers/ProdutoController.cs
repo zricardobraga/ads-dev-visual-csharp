@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 namespace API.Controllers
 {
     [ApiController] //anotação
@@ -22,6 +22,7 @@ namespace API.Controllers
 		[Route("create")]
 		public IActionResult Create([FromBody]Produto produto) 
 		{
+            produto.Categoria = _context.Categorias.Find(produto.CategoriaId);
             _context.Produtos.Add(produto);
             //confirma o objeto salvo no banco de dados
             _context.SaveChanges(); 
@@ -30,7 +31,9 @@ namespace API.Controllers
         //GET: api/produto/list
         [HttpGet]
         [Route("list")]
-        public IActionResult List() => Ok(_context.Produtos.ToList());
+        public IActionResult List() => Ok(_context.Produtos
+        .Include(produto => produto.Categoria)
+        .ToList());
 
         //GET: api/produto/getById/1
         [HttpGet]
@@ -38,7 +41,7 @@ namespace API.Controllers
         //para que seja possível retornar a mensagem de erro estilizada, temos que mudar o tipo de retorno para IActionResult (ao invés de um objeto Produto)
         public IActionResult GetById([FromRoute]int id)
         {   
-            Produto produto = _context.Produtos.Find(id);
+            Produto produto = _context.Produtos.Include(produto => produto.Categoria).FirstOrDefault( produto => produto.Id == id);
             if (produto == null)
             {
                 return NotFound("Produto não encontrado");
